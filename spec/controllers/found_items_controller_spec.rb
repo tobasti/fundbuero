@@ -29,11 +29,11 @@ RSpec.describe FoundItemsController, type: :controller do
   # FoundItem. As you add validations to FoundItem, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: 'Rote Brotbox', description: '18x24x5cm', pic_url: '001.jpg' }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: '' }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -97,14 +97,16 @@ RSpec.describe FoundItemsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: 'Graue Brotbox', description: 'Deckel ist lose', pic_url: '223.jpg' }
       }
 
       it "updates the requested found_item" do
         found_item = FoundItem.create! valid_attributes
         put :update, params: {id: found_item.to_param, found_item: new_attributes}, session: valid_session
         found_item.reload
-        skip("Add assertions for updated state")
+        new_attributes.each do |key, value|
+          assert value == found_item[key]
+        end
       end
 
       it "redirects to the found_item" do

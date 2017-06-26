@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @found_item.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @found_item.description %>
+</p>
+
+<p>
+  <strong>Pic url:</strong>
+  <%= @found_item.pic_url %>
+</p>
+
+<%= link_to 'Edit', edit_found_item_path(@found_item) %> |
+<%= link_to 'Back', found_items_path %>

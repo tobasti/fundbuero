@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Found Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Pic url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @found_items.each do |found_item| %>
+      <tr>
+        <td><%= found_item.name %></td>
+        <td><%= found_item.description %></td>
+        <td><%= found_item.pic_url %></td>
+        <td><%= link_to 'Show', found_item %></td>
+        <td><%= link_to 'Edit', edit_found_item_path(found_item) %></td>
+        <td><%= link_to 'Destroy', found_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Found Item', new_found_item_path %>

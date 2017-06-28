@@ -21,6 +21,10 @@
     <%= form.text_area :description, id: :found_item_description, cols: 30, rows: 15 %>
   </div>
 
+  <% if Rails.application.assets.resolve(@found_item.pic_url).present? %>
+      <%= image_tag @found_item.pic_url %>
+  <% end %>
+
   <div class="field">
     <%= form.label :pic_url %>
     <%= form.text_field :pic_url, id: :found_item_pic_url %>

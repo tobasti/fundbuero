@@ -5,9 +5,9 @@
 <table>
   <thead>
     <tr>
+      <th>Picture</th>
       <th>Name</th>
       <th>Description</th>
-      <th>Pic url</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +15,13 @@
   <tbody>
     <% @found_items.each do |found_item| %>
       <tr>
+        <% if Rails.application.assets.resolve(found_item.pic_url).present? %>
+          <td><%= image_tag found_item.pic_url %></td>
+        <% else %>
+          <td><%= found_item.pic_url %></td>
+        <% end %>
         <td><%= found_item.name %></td>
         <td><%= found_item.description %></td>
-        <td><%= found_item.pic_url %></td>
         <td><%= link_to 'Show', found_item %></td>
         <td><%= link_to 'Edit', edit_found_item_path(found_item) %></td>
         <td><%= link_to 'Destroy', found_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

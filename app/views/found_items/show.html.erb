@@ -11,8 +11,12 @@
 </p>
 
 <p>
-  <strong>Pic url:</strong>
-  <%= @found_item.pic_url %>
+  <strong>Picture:</strong> <br />
+  <% if Rails.application.assets.resolve(@found_item.pic_url).present? %>
+    <td><%= image_tag @found_item.pic_url %></td>
+  <% else %>
+    <td><%= @found_item.pic_url %></td>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_found_item_path(@found_item) %> |
